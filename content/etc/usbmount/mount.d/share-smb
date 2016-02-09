@@ -7,10 +7,10 @@ if [ "$SHARESMB" = yes ]; then
         [ "$SHARERW" = yes ] && smbrw=Y || smbrw=N
         net conf addshare $(basename "$UM_MOUNTPOINT" | tr ' ' '_') "$UM_MOUNTPOINT" writeable=$smbrw guest_ok=$gst || :
 
-        [ $gst = N ] && net conf setparm $(basename "$UM_MOUNTPOINT" | tr ' ' '_') "read list" xbian || :
+        [ $gst = N ] && net conf setparm $(basename "$UM_MOUNTPOINT" | tr ' ' '_') "read list" orangepi || :
         if [ $smbrw = Y ]; then
-            net conf setparm $(basename "$UM_MOUNTPOINT" | tr ' ' '_') "write list" xbian || :
-            net conf setparm $(basename "$UM_MOUNTPOINT" | tr ' ' '_') "force user" xbian || :
+            net conf setparm $(basename "$UM_MOUNTPOINT" | tr ' ' '_') "write list" orangepi || :
+            net conf setparm $(basename "$UM_MOUNTPOINT" | tr ' ' '_') "force user" orangepi || :
         fi
         net conf setparm $(basename "$UM_MOUNTPOINT" | tr ' ' '_') "browseable" yes || :
         net conf setparm $(basename "$UM_MOUNTPOINT" | tr ' ' '_') "comment" usbmount || :
